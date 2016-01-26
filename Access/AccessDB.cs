@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn = new OleDbConnection();
-                conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+Session.Path+"mrp.accdb;Persist Security Info=False;";
+                conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+Session._path+@"\mrp.accdb;Persist Security Info=False;";
             }
             catch (Exception ex)
             {

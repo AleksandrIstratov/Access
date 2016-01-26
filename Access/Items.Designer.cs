@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,6 +39,9 @@
             this.chbMachineBit = new System.Windows.Forms.CheckBox();
             this.cbProducer = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.picBItem = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picBItem)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -105,7 +109,7 @@
             // chbMachineBit
             // 
             this.chbMachineBit.AutoSize = true;
-            this.chbMachineBit.Location = new System.Drawing.Point(12, 198);
+            this.chbMachineBit.Location = new System.Drawing.Point(12, 165);
             this.chbMachineBit.Name = "chbMachineBit";
             this.chbMachineBit.Size = new System.Drawing.Size(67, 17);
             this.chbMachineBit.TabIndex = 7;
@@ -130,11 +134,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // picBItem
+            // 
+            this.picBItem.Location = new System.Drawing.Point(12, 188);
+            this.picBItem.Name = "picBItem";
+            this.picBItem.Size = new System.Drawing.Size(362, 275);
+            this.picBItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBItem.TabIndex = 10;
+            this.picBItem.TabStop = false;
+            this.picBItem.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 475);
+            this.Controls.Add(this.picBItem);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbProducer);
             this.Controls.Add(this.chbMachineBit);
@@ -147,6 +168,7 @@
             this.Controls.Add(this.btnClose);
             this.Name = "Items";
             this.Text = "Items";
+            ((System.ComponentModel.ISupportInitialize)(this.picBItem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +186,7 @@
         private System.Windows.Forms.CheckBox chbMachineBit;
         private System.Windows.Forms.ComboBox cbProducer;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox picBItem;
     }
 }

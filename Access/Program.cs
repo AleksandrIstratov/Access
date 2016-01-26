@@ -16,7 +16,11 @@ namespace WindowsFormsApplication1
         [STAThread]
         static void Main()
         {
-            Session.Path = @"D:\porno\";
+            Session._path = System.IO.Directory.GetCurrentDirectory();
+            System.IO.DirectoryInfo dirPath = System.IO.Directory.GetParent(Session._path);
+            Session._path = dirPath.Parent.FullName;
+            //MessageBox.Show(Session.Path);
+            //Session.Path = @"D:\porno\";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

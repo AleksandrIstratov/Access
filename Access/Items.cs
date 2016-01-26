@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
     {
 
         private Item _item { get; set; }
+        private FileContent _fc { get; set; }
         public Items(Item _itm)
         {
             InitializeComponent();
@@ -27,6 +28,12 @@ namespace WindowsFormsApplication1
             cbProducer.DisplayMember = "ProducerName";
             cbProducer.ValueMember = "IdProducer";
             cbProducer.SelectedValue = _item.ProducerId;
+
+            _fc = new FileContent();
+            _fc.MakePath(_item);
+            picBItem.ImageLocation = _fc.GetImg()[0];
+            
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -45,14 +52,21 @@ namespace WindowsFormsApplication1
             _item.OrderPrefix = tbOrderPrefix.Text;
             _item.MachineBit = chbMachineBit.Checked;
             _item.ProducerId = (int)cbProducer.SelectedValue;
-            _item.SaveToDB();            
+            _item.SaveToDB();
+            _fc.CreateFolder(Session.__dirPhoto);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FileContent fc = new FileContent();
-            fc.MakePath(_item);
-            fc.CreateFolder(Session.__dirPhoto);
+
+            _fc.SaveFromURL();
+            //fc.OpenFile();
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

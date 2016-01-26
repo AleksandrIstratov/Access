@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
             " SET [ItemName] = '" + ItemName + "'," +
             " [OrderPrefix] = '" + OrderPrefix + "'," +
             " [MachineBit] = " + MachineBit + "," +
-            " [ProducerId] = " + ProducerId + "," +
+            " [ProducerId] = " + ProducerId + 
             " WHERE [IdItem] = " + IdItem;
             aDB.ExecSQLNonQuery(sqlcmd);
         }

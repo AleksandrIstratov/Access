@@ -16,20 +16,24 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+
         }
 
         public void SaveState()
         {
-            Session.GridPosition = dataGridView1.CurrentRow.Index;
+            Session.GridPosition[Session.currAct] = dataGridView1.CurrentRow.Index;
         }
 
         public void LoadState()
         {
-            dataGridView1.Rows[Session.GridPosition].Selected = true;
+            dataGridView1.Rows[Session.GridPosition[Session.currAct]].Selected = true;
         }
 
         public void LoadGrid()
         {
+            btnAdd.Enabled = true;
+            btnDelete.Enabled = true;
+            btnEdit.Enabled = true;
             AccessDB aDB = new AccessDB();
             DataTable dT = aDB.getTable(Session.ActToString());
             dataGridView1.Columns.Clear();
@@ -38,13 +42,13 @@ namespace WindowsFormsApplication1
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnItems_Click(object sender, EventArgs e)
         {
             Session.currAct = Session.Act.Items;
             LoadGrid();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnProducers_Click(object sender, EventArgs e)
         {
             Session.currAct = Session.Act.Producers;
             LoadGrid();
