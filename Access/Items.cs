@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
 
         private Item _item { get; set; }
         private FileContent _fc { get; set; }
+        private string URL { get; set; }
+
         public Items(Item _itm)
         {
             InitializeComponent();
@@ -31,9 +33,14 @@ namespace WindowsFormsApplication1
 
             _fc = new FileContent();
             _fc.MakePath(_item);
+            Renew();
+        }
+
+        public void Renew()
+        {
+            listNavigator1.ListSource = _fc.GetImg();
+            listNavigator1.Commit();
             picBItem.ImageLocation = _fc.GetImg()[0];
-            
-            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -58,15 +65,59 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            _fc.SaveFromURL();
+            //_fc.SaveFromURL();
             //fc.OpenFile();
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void listNavigator1_StatusUpdated(object sender, EventArgs e)
         {
+            //MessageBox.Show(String.Format("{0}", listNavigator1.CurrentIndex));
+            picBItem.ImageLocation = _fc.GetImg()[listNavigator1.CurrentIndex];
+        }
 
+        private void fromDiskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _fc.AddFile();
+            Renew();
+        }
+
+        private void ShowMyDialogBox()
+        {
+            Dialog testDialog = new Dialog();
+
+            // Show testDialog as a modal dialog and determine if DialogResult = OK.
+            if (testDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // Read the contents of testDialog's TextBox.
+                this.URL = testDialog.tbURL.Text;
+            }
+            else
+            {
+                this.URL = "";
+            }
+            testDialog.Dispose();
+        }
+
+        private void ffromURLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowMyDialogBox();
+            if (this.URL.Length > 0)
+            {
+                _fc.SaveFromURL(this.URL);
+            }
+            Renew();
+        }
+
+        private void tsmImgDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult Reslt = MessageBox.Show("Delete", "Delete file?", MessageBoxButtons.OKCancel);
+            if (Reslt == DialogResult.OK)
+            {
+                _fc.DeleteImg(_fc.GetImg()[listNavigator1.CurrentIndex]);
+                Renew();
+            }
+            
         }
     }
 }

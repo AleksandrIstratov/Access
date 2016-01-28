@@ -39,9 +39,15 @@
             this.chbMachineBit = new System.Windows.Forms.CheckBox();
             this.cbProducer = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.picBItem = new System.Windows.Forms.PictureBox();
+            this.cmsImg = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmImgAddFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromDiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ffromURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmImgDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.listNavigator1 = new WindowsFormsApplication1.ListNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.picBItem)).BeginInit();
+            this.cmsImg.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -134,27 +140,68 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // picBItem
             // 
+            this.picBItem.ContextMenuStrip = this.cmsImg;
             this.picBItem.Location = new System.Drawing.Point(12, 188);
             this.picBItem.Name = "picBItem";
-            this.picBItem.Size = new System.Drawing.Size(362, 275);
+            this.picBItem.Size = new System.Drawing.Size(232, 246);
             this.picBItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBItem.TabIndex = 10;
             this.picBItem.TabStop = false;
-            this.picBItem.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // cmsImg
+            // 
+            this.cmsImg.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmImgAddFile,
+            this.tsmImgDelete});
+            this.cmsImg.Name = "cmsImg";
+            this.cmsImg.Size = new System.Drawing.Size(117, 48);
+            // 
+            // tsmImgAddFile
+            // 
+            this.tsmImgAddFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fromDiskToolStripMenuItem,
+            this.ffromURLToolStripMenuItem});
+            this.tsmImgAddFile.Name = "tsmImgAddFile";
+            this.tsmImgAddFile.Size = new System.Drawing.Size(116, 22);
+            this.tsmImgAddFile.Text = "Add file";
+            // 
+            // fromDiskToolStripMenuItem
+            // 
+            this.fromDiskToolStripMenuItem.Name = "fromDiskToolStripMenuItem";
+            this.fromDiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fromDiskToolStripMenuItem.Text = "From disk...";
+            this.fromDiskToolStripMenuItem.Click += new System.EventHandler(this.fromDiskToolStripMenuItem_Click);
+            // 
+            // ffromURLToolStripMenuItem
+            // 
+            this.ffromURLToolStripMenuItem.Name = "ffromURLToolStripMenuItem";
+            this.ffromURLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ffromURLToolStripMenuItem.Text = "From URL...";
+            this.ffromURLToolStripMenuItem.Click += new System.EventHandler(this.ffromURLToolStripMenuItem_Click);
+            // 
+            // tsmImgDelete
+            // 
+            this.tsmImgDelete.Name = "tsmImgDelete";
+            this.tsmImgDelete.Size = new System.Drawing.Size(116, 22);
+            this.tsmImgDelete.Text = "Delete...";
+            this.tsmImgDelete.Click += new System.EventHandler(this.tsmImgDelete_Click);
+            // 
+            // listNavigator1
+            // 
+            this.listNavigator1.Location = new System.Drawing.Point(12, 440);
+            this.listNavigator1.Name = "listNavigator1";
+            this.listNavigator1.Size = new System.Drawing.Size(192, 33);
+            this.listNavigator1.TabIndex = 11;
+            this.listNavigator1.StatusUpdated += new System.EventHandler(this.listNavigator1_StatusUpdated);
             // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 475);
+            this.Controls.Add(this.listNavigator1);
             this.Controls.Add(this.picBItem);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbProducer);
@@ -169,6 +216,7 @@
             this.Name = "Items";
             this.Text = "Items";
             ((System.ComponentModel.ISupportInitialize)(this.picBItem)).EndInit();
+            this.cmsImg.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,7 +234,12 @@
         private System.Windows.Forms.CheckBox chbMachineBit;
         private System.Windows.Forms.ComboBox cbProducer;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox picBItem;
+        private ListNavigator listNavigator1;
+        private System.Windows.Forms.ContextMenuStrip cmsImg;
+        private System.Windows.Forms.ToolStripMenuItem tsmImgAddFile;
+        private System.Windows.Forms.ToolStripMenuItem fromDiskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ffromURLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmImgDelete;
     }
 }
