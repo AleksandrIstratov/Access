@@ -71,6 +71,10 @@ namespace WindowsFormsApplication1
             {
                 _frm = new Producers((int)dataGridView1.CurrentRow.Cells[0].Value);
             }
+            if (Session.currAct == Session.Act.Storages)
+            {
+                _frm = new FStorages((int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
             _frm.Owner = this;
             _frm.Show();
         }
@@ -78,19 +82,21 @@ namespace WindowsFormsApplication1
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SaveState();
-
+            Form frm = null;
             if (Session.currAct == Session.Act.Producers)
             {
-                var prod = new Producers(0);
-                prod.Owner = this;
-                prod.Show();
+                frm = new Producers(0);
             }
             if (Session.currAct == Session.Act.Items)
             {
-                var _item = new Items(0);
-                _item.Owner = this;
-                _item.Show();
+                 frm = new Items(0);
             }
+            if (Session.currAct == Session.Act.Storages)
+            {
+                frm = new FStorages(0);
+            }
+            frm.Owner = this;
+            frm.Show();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -99,16 +105,20 @@ namespace WindowsFormsApplication1
             var DlgResult =  MessageBox.Show("Delete current element?","SomeText", MessageBoxButtons.YesNo);
             if (DlgResult == DialogResult.Yes)
             {
+                IMyTable tbl = null;
                 if (Session.currAct == Session.Act.Producers)
                 {
-                    producer prd = new producer();
-                    prd.DeleteFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
+                    tbl = new producer();
                 }
                 if (Session.currAct == Session.Act.Items)
                 {
-                    Item itm = new Item();
-                    itm.DeleteFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
+                    tbl = new Item();
                 }
+                if (Session.currAct == Session.Act.Storages)
+                {
+                    tbl = new Storage();
+                }
+                tbl.DeleteFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
             }
         }
 
@@ -117,6 +127,10 @@ namespace WindowsFormsApplication1
 
         }
 
-
+        private void btnStorages_Click(object sender, EventArgs e)
+        {
+            Session.currAct = Session.Act.Storages;
+            LoadGrid();
+        }
     }
 }

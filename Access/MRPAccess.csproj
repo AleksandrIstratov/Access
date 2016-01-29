@@ -55,6 +55,12 @@
       <DependentUpon>Dialog.cs</DependentUpon>
     </Compile>
     <Compile Include="FileContent.cs" />
+    <Compile Include="FStorages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FStorages.Designer.cs">
+      <DependentUpon>FStorages.cs</DependentUpon>
+    </Compile>
     <Compile Include="IMyTable.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Items.cs">
@@ -85,11 +91,15 @@
     <Compile Include="ListNavigator.Designer.cs">
       <DependentUpon>ListNavigator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Storage.cs" />
     <EmbeddedResource Include="Dialog.resx">
       <DependentUpon>Dialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FStorages.resx">
+      <DependentUpon>FStorages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items.resx">
       <DependentUpon>Items.cs</DependentUpon>

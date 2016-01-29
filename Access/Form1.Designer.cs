@@ -35,6 +35,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnStorages = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,11 +118,22 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnStorages
+            // 
+            this.btnStorages.Location = new System.Drawing.Point(13, 71);
+            this.btnStorages.Name = "btnStorages";
+            this.btnStorages.Size = new System.Drawing.Size(75, 23);
+            this.btnStorages.TabIndex = 7;
+            this.btnStorages.Text = "Storages";
+            this.btnStorages.UseVisualStyleBackColor = true;
+            this.btnStorages.Click += new System.EventHandler(this.btnStorages_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 498);
+            this.Controls.Add(this.btnStorages);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -145,6 +157,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnStorages;
     }
 }
 
