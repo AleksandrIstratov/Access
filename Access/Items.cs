@@ -13,14 +13,14 @@ namespace WindowsFormsApplication1
     public partial class Items : Form
     {
 
-        private Item _item { get; set; }
+        private Item _item = new Item();
         private FileContent _fc { get; set; }
         private string URL { get; set; }
 
-        public Items(Item _itm)
+        public Items(int _id)
         {
             InitializeComponent();
-            _item = _itm;
+            if (_id>0) _item.LoadFromDB(_id);
             tbItemName.Text = _item.ItemName;
             tbOrderPrefix.Text = _item.OrderPrefix;
             chbMachineBit.Checked = _item.MachineBit;
@@ -40,6 +40,7 @@ namespace WindowsFormsApplication1
         {
             listNavigator1.ListSource = _fc.GetImg();
             listNavigator1.Commit();
+            tsmImgDelete.Enabled = !_fc.IsEmpty;
             picBItem.ImageLocation = _fc.GetImg()[0];
         }
 

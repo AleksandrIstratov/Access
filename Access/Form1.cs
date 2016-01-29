@@ -62,22 +62,17 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             SaveState();
-            if (Session.currAct == Session.Act.Producers)
-            {
-                producer prd = new producer();
-                prd.LoadFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
-                var prod = new Producers(prd);
-                prod.Owner = this;
-                prod.Show();
-            }
+            Form _frm = null;
             if (Session.currAct == Session.Act.Items)
             {
-                Item itm = new Item();
-                itm.LoadFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
-                var _item = new Items(itm);
-                _item.Owner = this;
-                _item.Show();
+                _frm = new Items((int)dataGridView1.CurrentRow.Cells[0].Value);
             }
+            if (Session.currAct == Session.Act.Producers)
+            {
+                _frm = new Producers((int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
+            _frm.Owner = this;
+            _frm.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -86,15 +81,13 @@ namespace WindowsFormsApplication1
 
             if (Session.currAct == Session.Act.Producers)
             {
-                producer prd = new producer();
-                var prod = new Producers(prd);
+                var prod = new Producers(0);
                 prod.Owner = this;
                 prod.Show();
             }
             if (Session.currAct == Session.Act.Items)
             {
-                Item itm = new Item();
-                var _item = new Items(itm);
+                var _item = new Items(0);
                 _item.Owner = this;
                 _item.Show();
             }

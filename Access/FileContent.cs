@@ -12,7 +12,8 @@ namespace WindowsFormsApplication1
     public class FileContent
     {
 
-        public string path { get; private set;}
+        public string path { get; private set; }
+        public bool IsEmpty { get; private set; }
 
         public string MakePath(Item _item)
         {
@@ -82,16 +83,18 @@ namespace WindowsFormsApplication1
             try
             {                
                 imgFiles = Directory.GetFiles(path + Session.__dirPhoto + @"\").ToList<string>();
+                IsEmpty = false;
             }
             catch(System.IO.IOException e)
             {
                 MessageBox.Show("Error. GetImg(): "+ e.Message);
-                imgFiles = new List<string>();                
+                imgFiles = new List<string>();                                
             }
             
             if (imgFiles.Count == 0)
             {
                 imgFiles.Add(Session._path + Session.__file404);
+                IsEmpty = true;
             }
             return imgFiles;
         }

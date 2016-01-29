@@ -12,12 +12,13 @@ namespace WindowsFormsApplication1
 {
     public partial class Producers : Form
     {
-        private producer prd { get; set; }
-        public Producers(producer _prd)
+        private producer prd = new producer();
+
+        public Producers(int _id)
         {
             InitializeComponent();
-            this.prd = _prd;
-            tbName.Text = _prd.ProducerName;
+            if (_id>0) this.prd.LoadFromDB(_id);
+            tbName.Text = prd.ProducerName;
         }
 
 
