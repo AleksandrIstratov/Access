@@ -15,7 +15,11 @@ namespace WindowsFormsApplication1
         public static Dictionary<Act, string> DTables = new Dictionary<Act, string>();
         //public Dictionary<Act, IMyTable> DClass = new Dictionary<Act, IMyTable>();
         //public Dictionary<Act, Type> DForm = new Dictionary<Act, Type>();
-        public enum Act { Items, Producers, Storages};
+        public enum Act { Items,
+                          Producers,
+                          Storages,
+                          Products,
+                          Hardwares};
         public static Act currAct { get; set; }
         public static string _path { get; set; }
         public static Dictionary<Act, int> GridPosition = new Dictionary<Act, int>();
@@ -27,6 +31,8 @@ namespace WindowsFormsApplication1
             DTables.Add(Act.Items, "Items");
             DTables.Add(Act.Producers, "Producers");
             DTables.Add(Act.Storages, "Storages");
+            DTables.Add(Act.Products, "Products");
+            DTables.Add(Act.Hardwares, "Hardwares");
             foreach (Act _item in Enum.GetValues(typeof(Act)))
             {
                 GridPosition.Add(_item, 0);

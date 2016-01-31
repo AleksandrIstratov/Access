@@ -36,6 +36,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnStorages = new System.Windows.Forms.Button();
+            this.btnHardwares = new System.Windows.Forms.Button();
+            this.btnProducts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,6 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(552, 473);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btnProducers
             // 
@@ -120,7 +121,7 @@
             // 
             // btnStorages
             // 
-            this.btnStorages.Location = new System.Drawing.Point(13, 71);
+            this.btnStorages.Location = new System.Drawing.Point(12, 70);
             this.btnStorages.Name = "btnStorages";
             this.btnStorages.Size = new System.Drawing.Size(75, 23);
             this.btnStorages.TabIndex = 7;
@@ -128,11 +129,33 @@
             this.btnStorages.UseVisualStyleBackColor = true;
             this.btnStorages.Click += new System.EventHandler(this.btnStorages_Click);
             // 
+            // btnHardwares
+            // 
+            this.btnHardwares.Location = new System.Drawing.Point(12, 99);
+            this.btnHardwares.Name = "btnHardwares";
+            this.btnHardwares.Size = new System.Drawing.Size(75, 23);
+            this.btnHardwares.TabIndex = 8;
+            this.btnHardwares.Text = "Hardwares";
+            this.btnHardwares.UseVisualStyleBackColor = true;
+            this.btnHardwares.Click += new System.EventHandler(this.btnHardwares_Click);
+            // 
+            // btnProducts
+            // 
+            this.btnProducts.Location = new System.Drawing.Point(12, 128);
+            this.btnProducts.Name = "btnProducts";
+            this.btnProducts.Size = new System.Drawing.Size(75, 23);
+            this.btnProducts.TabIndex = 9;
+            this.btnProducts.Text = "Products";
+            this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 498);
+            this.Controls.Add(this.btnProducts);
+            this.Controls.Add(this.btnHardwares);
             this.Controls.Add(this.btnStorages);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -158,6 +181,8 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnStorages;
+        private System.Windows.Forms.Button btnHardwares;
+        private System.Windows.Forms.Button btnProducts;
     }
 }
 

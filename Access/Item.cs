@@ -9,42 +9,42 @@ namespace WindowsFormsApplication1
 {
     public class Item:IMyTable
     {
-        public int IdItem { get; set; }
-        public string ItemName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string OrderPrefix { get; set; }
         public bool MachineBit { get; set; }
-        public int ProducerId { get; set; }
+        public int? ProducerId { get; set; }
 
         public void LoadFromDB(int id)
         {
-            IdItem = id;
+            this.Id = id;
             AccessDB aDB = new AccessDB();            
             DataTable dT = aDB.getTable(Session.DTables[Session.Act.Items]);
-            DataRow row = dT.Select("IdItem = " + IdItem).First();
-            ItemName = row.Field<string>("ItemName");
+            DataRow row = dT.Select("IdItem = " + this.Id).First();
+            this.Name = row.Field<string>("ItemName");
             OrderPrefix = row.Field<string>("OrderPrefix");
             MachineBit = row.Field<bool>("MachineBit");
-            ProducerId = row.Field<int>("ProducerId");            
+            ProducerId = row.Field<int?>("ProducerId");            
         }
 
         public void SaveToDB()
         {
             AccessDB aDB = new AccessDB();
             string sqlcmd = null;
-            if (this.IdItem == 0)
+            if (this.Id == 0)
             {
                 sqlcmd = "SELECT TOP 1 IdItem FROM " + Session.DTables[Session.Act.Items] + " ORDER BY IdItem DESC";
-                IdItem = aDB.ExecSQLQuery(sqlcmd).Select().First().Field<int>("IdItem") + 1;
+                this.Id = aDB.ExecSQLQuery(sqlcmd).Select().First().Field<int>("IdItem") + 1;
                 sqlcmd = "INSERT INTO " + Session.DTables[Session.Act.Items] +
-                " ([IdItem]) VALUES (" + IdItem + ")";
+                " ([IdItem]) VALUES (" + this.Id + ")";
                 aDB.ExecSQLNonQuery(sqlcmd);
             }
             sqlcmd = "UPDATE " + Session.DTables[Session.Act.Items] +
-            " SET [ItemName] = '" + ItemName + "'," +
-            " [OrderPrefix] = '" + OrderPrefix + "'," +
-            " [MachineBit] = " + MachineBit + "," +
-            " [ProducerId] = " + ProducerId + 
-            " WHERE [IdItem] = " + IdItem;
+            " SET [ItemName] = '" + this.Name + "'," +
+            " [OrderPrefix] = '" + this.OrderPrefix + "'," +
+            " [MachineBit] = " + this.MachineBit + "," +
+            " [ProducerId] = " + ((this.ProducerId != null) ? this.ProducerId.ToString() : "NULL") + 
+            " WHERE [IdItem] = " + this.Id;
             aDB.ExecSQLNonQuery(sqlcmd);
         }
 

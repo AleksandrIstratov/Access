@@ -21,12 +21,13 @@ namespace WindowsFormsApplication1
 
         public void SaveState()
         {
+            if (dataGridView1.DataSource != null)
             Session.GridPosition[Session.currAct] = dataGridView1.CurrentRow.Index;
         }
 
         public void LoadState()
-        {
-            dataGridView1.Rows[Session.GridPosition[Session.currAct]].Selected = true;
+        {    
+            dataGridView1.CurrentCell = dataGridView1[0,Session.GridPosition[Session.currAct]];
         }
 
         public void LoadGrid()
@@ -41,42 +42,9 @@ namespace WindowsFormsApplication1
             LoadState();
         }
 
-
-        private void btnItems_Click(object sender, EventArgs e)
-        {
-            Session.currAct = Session.Act.Items;
-            LoadGrid();
-        }
-
-        private void btnProducers_Click(object sender, EventArgs e)
-        {
-            Session.currAct = Session.Act.Producers;
-            LoadGrid();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            SaveState();
-            Form _frm = null;
-            if (Session.currAct == Session.Act.Items)
-            {
-                _frm = new Items((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            if (Session.currAct == Session.Act.Producers)
-            {
-                _frm = new Producers((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            if (Session.currAct == Session.Act.Storages)
-            {
-                _frm = new FStorages((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            _frm.Owner = this;
-            _frm.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -94,6 +62,14 @@ namespace WindowsFormsApplication1
             if (Session.currAct == Session.Act.Storages)
             {
                 frm = new FStorages(0);
+            }
+            if (Session.currAct == Session.Act.Products)
+            {
+                frm = new FProducts(0);
+            }
+            if (Session.currAct == Session.Act.Hardwares)
+            {
+                frm = new FHardwares(0);
             }
             frm.Owner = this;
             frm.Show();
@@ -118,18 +94,79 @@ namespace WindowsFormsApplication1
                 {
                     tbl = new Storage();
                 }
+                if (Session.currAct == Session.Act.Products)
+                {
+                    tbl = new Product();
+                }
+                if (Session.currAct == Session.Act.Hardwares)
+                {
+                    tbl = new Hardware();
+                }
                 tbl.DeleteFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            SaveState();
+            Form _frm = null;
+            if (Session.currAct == Session.Act.Items)
+            {
+                _frm = new Items((int)dataGridView1.CurrentRow.Cells[0].Value);
+                //_frm = (Form)Activator.CreateInstance(Type.GetType("Items"), (int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
+            if (Session.currAct == Session.Act.Producers)
+            {
+                _frm = new Producers((int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
+            if (Session.currAct == Session.Act.Storages)
+            {
+                _frm = new FStorages((int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
+            if (Session.currAct == Session.Act.Products)
+            {
+                _frm = new FProducts((int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
+            if (Session.currAct == Session.Act.Hardwares)
+            {
+                _frm = new FHardwares((int)dataGridView1.CurrentRow.Cells[0].Value);
+            }
+            _frm.Owner = this;
+            _frm.Show();
+        }
 
+        private void btnItems_Click(object sender, EventArgs e)
+        {
+            SaveState();
+            Session.currAct = Session.Act.Items;
+            LoadGrid();
+        }
+
+        private void btnProducers_Click(object sender, EventArgs e)
+        {
+            SaveState();
+            Session.currAct = Session.Act.Producers;
+            LoadGrid();
         }
 
         private void btnStorages_Click(object sender, EventArgs e)
         {
+            SaveState();
             Session.currAct = Session.Act.Storages;
+            LoadGrid();
+        }
+
+        private void btnHardwares_Click(object sender, EventArgs e)
+        {
+            SaveState();
+            Session.currAct = Session.Act.Hardwares;
+            LoadGrid();
+        }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            SaveState();
+            Session.currAct = Session.Act.Products;
             LoadGrid();
         }
     }

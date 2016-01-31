@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         public string MakePath(Item _item)
         {
             string _path = ""; 
-            _path = Session._path + Session.__pathPrefix + @"\" + _item.ProducerId + " - " + _item.IdItem;
+            _path = Session._path + Session.__pathPrefix + @"\" + _item.ProducerId + " - " + _item.Id;
             return path = _path;
         }
 

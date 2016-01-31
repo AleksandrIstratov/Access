@@ -9,8 +9,8 @@ namespace WindowsFormsApplication1
 {
     public class Storage:IMyTable
     {
-        public int Id;
-        public string Name;
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         public void LoadFromDB(int id)
         {

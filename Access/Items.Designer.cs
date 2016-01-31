@@ -170,14 +170,14 @@
             // fromDiskToolStripMenuItem
             // 
             this.fromDiskToolStripMenuItem.Name = "fromDiskToolStripMenuItem";
-            this.fromDiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fromDiskToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.fromDiskToolStripMenuItem.Text = "From disk...";
             this.fromDiskToolStripMenuItem.Click += new System.EventHandler(this.fromDiskToolStripMenuItem_Click);
             // 
             // ffromURLToolStripMenuItem
             // 
             this.ffromURLToolStripMenuItem.Name = "ffromURLToolStripMenuItem";
-            this.ffromURLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ffromURLToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.ffromURLToolStripMenuItem.Text = "From URL...";
             this.ffromURLToolStripMenuItem.Click += new System.EventHandler(this.ffromURLToolStripMenuItem_Click);
             // 

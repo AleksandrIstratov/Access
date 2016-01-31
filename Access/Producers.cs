@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             if (_id>0) this.prd.LoadFromDB(_id);
-            tbName.Text = prd.ProducerName;
+            tbName.Text = prd.Name;
         }
 
 
@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.prd.ProducerName = tbName.Text;
+            this.prd.Name = tbName.Text;
             this.prd.SaveToDB();
         }
     }

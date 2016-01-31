@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             if (_id>0) _item.LoadFromDB(_id);
-            tbItemName.Text = _item.ItemName;
+            tbItemName.Text = _item.Name;
             tbOrderPrefix.Text = _item.OrderPrefix;
             chbMachineBit.Checked = _item.MachineBit;
 
@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
             cbProducer.DataSource = aDB.getTable(Session.DTables[Session.Act.Producers]);
             cbProducer.DisplayMember = "ProducerName";
             cbProducer.ValueMember = "IdProducer";
-            cbProducer.SelectedValue = _item.ProducerId;
+            cbProducer.SelectedValue = _item.ProducerId ?? 0;
 
             _fc = new FileContent();
             _fc.MakePath(_item);
@@ -56,10 +56,10 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _item.ItemName = tbItemName.Text;
+            _item.Name = tbItemName.Text;
             _item.OrderPrefix = tbOrderPrefix.Text;
             _item.MachineBit = chbMachineBit.Checked;
-            _item.ProducerId = (int)cbProducer.SelectedValue;
+            _item.ProducerId = (int?)cbProducer.SelectedValue;
             _item.SaveToDB();
             _fc.CreateFolder(Session.__dirPhoto);
         }

@@ -8,6 +8,9 @@ namespace WindowsFormsApplication1
 {
     public interface IMyTable
     {
+        int Id { get; set; }
+        string Name { get; set; }
+
         void LoadFromDB(int id);
         void SaveToDB();
         void DeleteFromDB(int id);

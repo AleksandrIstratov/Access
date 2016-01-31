@@ -54,13 +54,26 @@
     <Compile Include="Dialog.Designer.cs">
       <DependentUpon>Dialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FHardwares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FHardwares.Designer.cs">
+      <DependentUpon>FHardwares.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileContent.cs" />
+    <Compile Include="FProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FProducts.Designer.cs">
+      <DependentUpon>FProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="FStorages.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FStorages.Designer.cs">
       <DependentUpon>FStorages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hardware.cs" />
     <Compile Include="IMyTable.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Items.cs">
@@ -70,6 +83,7 @@
       <DependentUpon>Items.cs</DependentUpon>
     </Compile>
     <Compile Include="producer.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -94,6 +108,9 @@
     <Compile Include="Storage.cs" />
     <EmbeddedResource Include="Dialog.resx">
       <DependentUpon>Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FHardwares.resx">
+      <DependentUpon>FHardwares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

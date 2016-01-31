@@ -10,33 +10,33 @@ namespace WindowsFormsApplication1
 {
     public class producer:IMyTable
     {
-        public string ProducerName { get; set; }
-        private int IdProducer { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         public void LoadFromDB(int id)
         {
-            IdProducer = id;
+            this.Id = id;
             AccessDB aDB = new AccessDB();
             DataTable dT = aDB.getTable(Session.DTables[Session.Act.Producers]);
-            DataRow row = dT.Select("IdProducer = " +IdProducer).First();
-            ProducerName = row.Field<string>("ProducerName");
+            DataRow row = dT.Select("IdProducer = " + this.Id).First();
+            this.Name = row.Field<string>("ProducerName");
         }
 
         public void SaveToDB()
         {
             AccessDB aDB = new AccessDB();
             string sqlcmd = null;
-            if (this.IdProducer == 0)
+            if (this.Id == 0)
             {
                 sqlcmd = "SELECT TOP 1 IdProducer FROM " + Session.DTables[Session.Act.Producers] + " ORDER BY IdProducer DESC";
-                IdProducer = aDB.ExecSQLQuery(sqlcmd).Select().First().Field<int>("IdProducer")+1;
+                this.Id = aDB.ExecSQLQuery(sqlcmd).Select().First().Field<int>("IdProducer")+1;
                 sqlcmd = "INSERT INTO " + Session.DTables[Session.Act.Producers]+
-                " ([IdProducer]) VALUES (" + IdProducer + ")";
+                " ([IdProducer]) VALUES (" + this.Id + ")";
                 aDB.ExecSQLNonQuery(sqlcmd);
             }
                 sqlcmd = "UPDATE " + Session.DTables[Session.Act.Producers] +
-                " SET [ProducerName] = '" + ProducerName + "'" +
-                " WHERE [IdProducer] = " + IdProducer;
+                " SET [ProducerName] = '" + this.Name + "'" +
+                " WHERE [IdProducer] = " + this.Id;
                 aDB.ExecSQLNonQuery(sqlcmd);
         }
 
