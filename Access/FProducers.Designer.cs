@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Producers
+    partial class FProducers
     {
         /// <summary>
         /// Required designer variable.
@@ -79,6 +79,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Producers";
             this.Text = "Producers";
             this.ResumeLayout(false);

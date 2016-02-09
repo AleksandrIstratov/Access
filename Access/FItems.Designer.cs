@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Items
+    partial class FItems
     {
         /// <summary>
         /// Required designer variable.
@@ -213,6 +213,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Items";
             this.Text = "Items";
             ((System.ComponentModel.ISupportInitialize)(this.picBItem)).EndInit();

@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Items : Form
+    public partial class FItems : Form
     {
 
         private Item _item = new Item();
         private FileContent _fc { get; set; }
         private string URL { get; set; }
 
-        public Items(int _id)
+        public FItems(int _id)
         {
             InitializeComponent();
             if (_id>0) _item.LoadFromDB(_id);

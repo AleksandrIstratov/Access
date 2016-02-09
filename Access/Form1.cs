@@ -50,27 +50,7 @@ namespace WindowsFormsApplication1
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SaveState();
-            Form frm = null;
-            if (Session.currAct == Session.Act.Producers)
-            {
-                frm = new Producers(0);
-            }
-            if (Session.currAct == Session.Act.Items)
-            {
-                 frm = new Items(0);
-            }
-            if (Session.currAct == Session.Act.Storages)
-            {
-                frm = new FStorages(0);
-            }
-            if (Session.currAct == Session.Act.Products)
-            {
-                frm = new FProducts(0);
-            }
-            if (Session.currAct == Session.Act.Hardwares)
-            {
-                frm = new FHardwares(0);
-            }
+            Form frm = Session.ReturnActForm(0);
             frm.Owner = this;
             frm.Show();
         }
@@ -81,27 +61,7 @@ namespace WindowsFormsApplication1
             var DlgResult =  MessageBox.Show("Delete current element?","SomeText", MessageBoxButtons.YesNo);
             if (DlgResult == DialogResult.Yes)
             {
-                IMyTable tbl = null;
-                if (Session.currAct == Session.Act.Producers)
-                {
-                    tbl = new producer();
-                }
-                if (Session.currAct == Session.Act.Items)
-                {
-                    tbl = new Item();
-                }
-                if (Session.currAct == Session.Act.Storages)
-                {
-                    tbl = new Storage();
-                }
-                if (Session.currAct == Session.Act.Products)
-                {
-                    tbl = new Product();
-                }
-                if (Session.currAct == Session.Act.Hardwares)
-                {
-                    tbl = new Hardware();
-                }
+                IMyTable tbl = Session.ReturnActTable();
                 tbl.DeleteFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
             }
         }
@@ -109,28 +69,7 @@ namespace WindowsFormsApplication1
         private void btnEdit_Click(object sender, EventArgs e)
         {
             SaveState();
-            Form _frm = null;
-            if (Session.currAct == Session.Act.Items)
-            {
-                _frm = new Items((int)dataGridView1.CurrentRow.Cells[0].Value);
-                //_frm = (Form)Activator.CreateInstance(Type.GetType("Items"), (int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            if (Session.currAct == Session.Act.Producers)
-            {
-                _frm = new Producers((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            if (Session.currAct == Session.Act.Storages)
-            {
-                _frm = new FStorages((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            if (Session.currAct == Session.Act.Products)
-            {
-                _frm = new FProducts((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
-            if (Session.currAct == Session.Act.Hardwares)
-            {
-                _frm = new FHardwares((int)dataGridView1.CurrentRow.Cells[0].Value);
-            }
+            Form _frm = Session.ReturnActForm((int)dataGridView1.CurrentRow.Cells[0].Value);
             _frm.Owner = this;
             _frm.Show();
         }

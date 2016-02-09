@@ -125,6 +125,8 @@
             this.Controls.Add(this.lblParent);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FHardwares";
             this.Text = "FHardwares";
             this.ResumeLayout(false);

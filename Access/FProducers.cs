@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Producers : Form
+    public partial class FProducers : Form
     {
         private producer prd = new producer();
 
-        public Producers(int _id)
+        public FProducers(int _id)
         {
             InitializeComponent();
             if (_id>0) this.prd.LoadFromDB(_id);

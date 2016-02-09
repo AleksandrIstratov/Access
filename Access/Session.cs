@@ -26,6 +26,11 @@ namespace WindowsFormsApplication1
 
         private static readonly Session instance = new Session();
 
+        public static Session Instance
+        {
+            get { return instance; }
+        }
+
         private Session()
         {
             DTables.Add(Act.Items, "Items");
@@ -43,10 +48,61 @@ namespace WindowsFormsApplication1
             //DForm.Add(Act.Producers, null);
         }
 
-        public static Session Instance
+        public static Form ReturnActForm(int _id)
         {
-            get { return instance; }
+            Form frm = null;
+            if (Session.currAct == Session.Act.Producers)
+            {
+                frm = new FProducers(_id);
+            }
+            if (Session.currAct == Session.Act.Items)
+            {
+                frm = new FItems(_id);
+            }
+            if (Session.currAct == Session.Act.Storages)
+            {
+                frm = new FStorages(_id);
+            }
+            if (Session.currAct == Session.Act.Products)
+            {
+                frm = new FProducts(_id);
+            }
+            if (Session.currAct == Session.Act.Hardwares)
+            {
+                frm = new FHardwares(_id);
+            }
+            return frm;
         }
+
+        public static IMyTable ReturnActTable()
+        {
+            IMyTable tbl = null;
+            if (Session.currAct == Session.Act.Producers)
+            {
+                tbl = new producer();
+            }
+            if (Session.currAct == Session.Act.Items)
+            {
+                tbl = new Item();
+            }
+            if (Session.currAct == Session.Act.Storages)
+            {
+                tbl = new Storage();
+            }
+            if (Session.currAct == Session.Act.Products)
+            {
+                tbl = new Product();
+            }
+            if (Session.currAct == Session.Act.Hardwares)
+            {
+                tbl = new Hardware();
+            }
+            if (Session.currAct == Session.Act.Products)
+            {
+                tbl = new Product();
+            }
+            return tbl;
+        }                       
 
         public static string ActToString()
         {

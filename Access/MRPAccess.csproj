@@ -76,11 +76,11 @@
     <Compile Include="Hardware.cs" />
     <Compile Include="IMyTable.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Items.cs">
+    <Compile Include="FItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Items.Designer.cs">
-      <DependentUpon>Items.cs</DependentUpon>
+    <Compile Include="FItems.Designer.cs">
+      <DependentUpon>FItems.cs</DependentUpon>
     </Compile>
     <Compile Include="producer.cs" />
     <Compile Include="Product.cs" />
@@ -91,11 +91,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producers.cs">
+    <Compile Include="FProducers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Producers.Designer.cs">
-      <DependentUpon>Producers.cs</DependentUpon>
+    <Compile Include="FProducers.Designer.cs">
+      <DependentUpon>FProducers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,14 +115,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FProducts.resx">
+      <DependentUpon>FProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FStorages.resx">
       <DependentUpon>FStorages.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Items.resx">
-      <DependentUpon>Items.cs</DependentUpon>
+    <EmbeddedResource Include="FItems.resx">
+      <DependentUpon>FItems.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producers.resx">
-      <DependentUpon>Producers.cs</DependentUpon>
+    <EmbeddedResource Include="FProducers.resx">
+      <DependentUpon>FProducers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

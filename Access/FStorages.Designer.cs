@@ -83,6 +83,8 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FStorages";
             this.Text = "FStorages";
             this.ResumeLayout(false);
