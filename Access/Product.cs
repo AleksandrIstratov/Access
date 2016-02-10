@@ -11,11 +11,11 @@ namespace WindowsFormsApplication1
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int ItemId { get; set; }
+        public int? ItemId { get; set; }
         public string SerialNumber { get; set; }
         public string InventoryNumber { get; set; }
-        public DateTime ProductionDate { get; set; }
-        public DateTime PurchaseDate { get; set; }
+        public DateTime? ProductionDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
 
         public void LoadFromDB(int id)
         {
@@ -24,11 +24,11 @@ namespace WindowsFormsApplication1
             DataTable dT = aDB.getTable(Session.DTables[Session.Act.Products]);
             DataRow row = dT.Select("IdProduct = " + this.Id).First();
             this.Name = row.Field<string>("ProductName");
-            this.ItemId = row.Field<int>("ItemId");
+            this.ItemId = row.Field<int?>("ItemId");
             this.SerialNumber = row.Field<string>("SerialNumber");
             this.InventoryNumber = row.Field<string>("InventoryNumber");
-            this.ProductionDate = row.Field<DateTime>("ProductionDate");
-            this.PurchaseDate = row.Field<DateTime>("PurchaseDate");
+            this.ProductionDate = row.Field<DateTime?>("ProductionDate");
+            this.PurchaseDate = row.Field<DateTime?>("PurchaseDate");
         }
 
         public void SaveToDB()
@@ -45,11 +45,11 @@ namespace WindowsFormsApplication1
             }
             sqlcmd = "UPDATE " + Session.DTables[Session.Act.Products] +
             " SET [ProductName] = '" + this.Name + "'," +
-            " [ItemId] = " + this.ItemId + "," +
-            " [SerialNumber] = " + this.SerialNumber + "," +
-            " [InventoryNumber] = " + this.InventoryNumber + "," +
-            " [ProductionDate] = " + this.ProductionDate + "," +
-            " [PurchaseDate] = " + this.PurchaseDate +
+            " [ItemId] = " + ((this.ItemId != null) ? this.ItemId.ToString() : "NULL") + "," +
+            " [SerialNumber] = '" + this.SerialNumber + "'," +
+            " [InventoryNumber] = '" + this.InventoryNumber + "'," +
+            " [ProductionDate] = " + ((this.ProductionDate != null) ? "'"+this.ProductionDate.Value.ToString()+"'" : "NULL") + "," +
+            " [PurchaseDate] = " + ((this.PurchaseDate != null) ? "'"+this.PurchaseDate.Value.ToString()+ "'" : "NULL") +
             " WHERE [IdProduct] = " + this.Id;
             aDB.ExecSQLNonQuery(sqlcmd);
         }
@@ -61,6 +61,17 @@ namespace WindowsFormsApplication1
             sqlcmd = "DELETE FROM " + Session.DTables[Session.Act.Products] +
                      " WHERE [IdProduct] = " + id;
             aDB.ExecSQLNonQuery(sqlcmd);
+        }
+
+        public DataTable GetItemsTable()
+        {
+            DataTable _dt = null;
+            AccessDB aDB = new AccessDB();
+            string sqlcmd = null;
+            sqlcmd = "SELECT IdItem AS ValueMember, (ItemName & ' ' & OrderPrefix) AS DisplayMember FROM " +
+                     Session.DTables[Session.Act.Items];
+            _dt = aDB.ExecSQLQuery(sqlcmd);
+            return _dt;
         }
     }
 }

@@ -32,6 +32,7 @@ namespace WindowsFormsApplication1
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.hdwr.Name = tbName.Text;
+            this.hdwr.ItemId = (int?)cbItem.SelectedValue;
             this.hdwr.ParentHardware = (int?)cbHardware.SelectedValue;
             this.hdwr.SaveToDB();
         }

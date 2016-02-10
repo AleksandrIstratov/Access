@@ -40,12 +40,14 @@
             this.dtProductionDate = new System.Windows.Forms.DateTimePicker();
             this.lPurchaseDate = new System.Windows.Forms.Label();
             this.dtPurchaseDate = new System.Windows.Forms.DateTimePicker();
+            this.lInventoryNumber = new System.Windows.Forms.Label();
+            this.tbInventoryNumber = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(208, 304);
+            this.btnClose.Location = new System.Drawing.Point(239, 346);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 0;
@@ -55,12 +57,13 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(208, 275);
+            this.btnSave.Location = new System.Drawing.Point(239, 317);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lName
             // 
@@ -114,7 +117,7 @@
             // lProductionDate
             // 
             this.lProductionDate.AutoSize = true;
-            this.lProductionDate.Location = new System.Drawing.Point(13, 154);
+            this.lProductionDate.Location = new System.Drawing.Point(13, 209);
             this.lProductionDate.Name = "lProductionDate";
             this.lProductionDate.Size = new System.Drawing.Size(82, 13);
             this.lProductionDate.TabIndex = 8;
@@ -122,15 +125,17 @@
             // 
             // dtProductionDate
             // 
-            this.dtProductionDate.Location = new System.Drawing.Point(13, 171);
+            this.dtProductionDate.Location = new System.Drawing.Point(13, 226);
+            this.dtProductionDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtProductionDate.Name = "dtProductionDate";
+            this.dtProductionDate.ShowCheckBox = true;
             this.dtProductionDate.Size = new System.Drawing.Size(200, 20);
             this.dtProductionDate.TabIndex = 9;
             // 
             // lPurchaseDate
             // 
             this.lPurchaseDate.AutoSize = true;
-            this.lPurchaseDate.Location = new System.Drawing.Point(13, 212);
+            this.lPurchaseDate.Location = new System.Drawing.Point(13, 267);
             this.lPurchaseDate.Name = "lPurchaseDate";
             this.lPurchaseDate.Size = new System.Drawing.Size(76, 13);
             this.lPurchaseDate.TabIndex = 10;
@@ -138,17 +143,37 @@
             // 
             // dtPurchaseDate
             // 
-            this.dtPurchaseDate.Location = new System.Drawing.Point(13, 229);
+            this.dtPurchaseDate.Location = new System.Drawing.Point(13, 284);
+            this.dtPurchaseDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtPurchaseDate.Name = "dtPurchaseDate";
+            this.dtPurchaseDate.ShowCheckBox = true;
             this.dtPurchaseDate.Size = new System.Drawing.Size(200, 20);
             this.dtPurchaseDate.TabIndex = 11;
+            // 
+            // lInventoryNumber
+            // 
+            this.lInventoryNumber.AutoSize = true;
+            this.lInventoryNumber.Location = new System.Drawing.Point(13, 155);
+            this.lInventoryNumber.Name = "lInventoryNumber";
+            this.lInventoryNumber.Size = new System.Drawing.Size(83, 13);
+            this.lInventoryNumber.TabIndex = 12;
+            this.lInventoryNumber.Text = "Inventory numer";
+            // 
+            // tbInventoryNumber
+            // 
+            this.tbInventoryNumber.Location = new System.Drawing.Point(16, 172);
+            this.tbInventoryNumber.Name = "tbInventoryNumber";
+            this.tbInventoryNumber.Size = new System.Drawing.Size(209, 20);
+            this.tbInventoryNumber.TabIndex = 13;
             // 
             // FProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(295, 339);
+            this.ClientSize = new System.Drawing.Size(326, 381);
+            this.Controls.Add(this.tbInventoryNumber);
+            this.Controls.Add(this.lInventoryNumber);
             this.Controls.Add(this.dtPurchaseDate);
             this.Controls.Add(this.lPurchaseDate);
             this.Controls.Add(this.dtProductionDate);
@@ -184,5 +209,7 @@
         private System.Windows.Forms.DateTimePicker dtProductionDate;
         private System.Windows.Forms.Label lPurchaseDate;
         private System.Windows.Forms.DateTimePicker dtPurchaseDate;
+        private System.Windows.Forms.Label lInventoryNumber;
+        private System.Windows.Forms.TextBox tbInventoryNumber;
     }
 }
