@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    class AccessDB
+    class CAccessDB
     {
         private OleDbConnection conn;
    
-        public AccessDB()
+        public CAccessDB()
         {
             try
             {
@@ -24,13 +24,6 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Error: Failed to create a database connection. \n{0}", ex.Message);
             }
-        }
-
-        public DataTable getTable(string tableName)
-        {
-            string sqlcmd = "SELECT * " + 
-                            "FROM " + tableName;
-            return ExecSQLQuery(sqlcmd);
         }
 
         public DataTable ExecSQLQuery(string sqlcmd)

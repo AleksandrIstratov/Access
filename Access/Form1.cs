@@ -21,13 +21,16 @@ namespace WindowsFormsApplication1
 
         public void SaveState()
         {
-            if (dataGridView1.DataSource != null)
-            Session.GridPosition[Session.currAct] = dataGridView1.CurrentRow.Index;
+            if (dGW.DataSource != null)
+            Session.GridPosition[Session.currAct] = dGW.CurrentRow.Index;
         }
 
         public void LoadState()
-        {    
-            dataGridView1.CurrentCell = dataGridView1[0,Session.GridPosition[Session.currAct]];
+        {
+            int index = Session.GridPosition[Session.currAct];
+            int indexMax = dGW.RowCount - 1;
+            index = index > indexMax ? indexMax : index;
+            dGW.CurrentCell = dGW[1,index];
         }
 
         public void LoadGrid()
@@ -35,10 +38,10 @@ namespace WindowsFormsApplication1
             btnAdd.Enabled = true;
             btnDelete.Enabled = true;
             btnEdit.Enabled = true;
-            AccessDB aDB = new AccessDB();
-            DataTable dT = aDB.getTable(Session.ActToString());
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = dT;
+            dGW.Columns.Clear();
+            dGW.DataSource = Session.GetCurrTable().GetDataTable();
+            CGrid.SetDGridView(dGW, Session.currAct.ToString());
+            dGW.AutoResizeColumns();
             LoadState();
         }
 
@@ -61,15 +64,15 @@ namespace WindowsFormsApplication1
             var DlgResult =  MessageBox.Show("Delete current element?","SomeText", MessageBoxButtons.YesNo);
             if (DlgResult == DialogResult.Yes)
             {
-                IMyTable tbl = Session.ReturnActTable();
-                tbl.DeleteFromDB((int)dataGridView1.CurrentRow.Cells[0].Value);
+                Session.GetCurrTable().DeleteFromDB((int)dGW.CurrentRow.Cells[0].Value);
             }
+            LoadGrid();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             SaveState();
-            Form _frm = Session.ReturnActForm((int)dataGridView1.CurrentRow.Cells[0].Value);
+            Form _frm = Session.ReturnActForm((int)dGW.CurrentRow.Cells[0].Value);
             _frm.Owner = this;
             _frm.Show();
         }

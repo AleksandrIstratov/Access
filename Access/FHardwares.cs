@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class FHardwares : Form
     {
-        private Hardware hdwr = new Hardware();
+        private CHardware hdwr = new CHardware();
 
         public FHardwares(int _id)
         {

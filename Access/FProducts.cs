@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class FProducts : Form
     {
-        private Product _product = new Product();
+        private CProduct _product = new CProduct();
         public FProducts(int _id)
         {
             InitializeComponent();

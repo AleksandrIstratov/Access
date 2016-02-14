@@ -7,7 +7,7 @@ using System.Data;
 
 namespace WindowsFormsApplication1
 {
-    public class Product : IMyTable
+    public class CProduct : IMyTable
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -20,8 +20,7 @@ namespace WindowsFormsApplication1
         public void LoadFromDB(int id)
         {
             this.Id = id;
-            AccessDB aDB = new AccessDB();
-            DataTable dT = aDB.getTable(Session.DTables[Session.Act.Products]);
+            DataTable dT = this.GetDataTable();
             DataRow row = dT.Select("IdProduct = " + this.Id).First();
             this.Name = row.Field<string>("ProductName");
             this.ItemId = row.Field<int?>("ItemId");
@@ -33,17 +32,17 @@ namespace WindowsFormsApplication1
 
         public void SaveToDB()
         {
-            AccessDB aDB = new AccessDB();
+            CAccessDB aDB = new CAccessDB();
             string sqlcmd = null;
             if (this.Id == 0)
             {
-                sqlcmd = "SELECT TOP 1 IdProduct FROM " + Session.DTables[Session.Act.Products] + " ORDER BY IdProduct DESC";
+                sqlcmd = "SELECT TOP 1 IdProduct FROM Products ORDER BY IdProduct DESC";
                 this.Id = aDB.ExecSQLQuery(sqlcmd).Select().First().Field<int>("IdProduct") + 1;
-                sqlcmd = "INSERT INTO " + Session.DTables[Session.Act.Products] +
+                sqlcmd = "INSERT INTO Products" +
                 " ([IdProduct]) VALUES (" + this.Id + ")";
                 aDB.ExecSQLNonQuery(sqlcmd);
             }
-            sqlcmd = "UPDATE " + Session.DTables[Session.Act.Products] +
+            sqlcmd = "UPDATE Products" +
             " SET [ProductName] = '" + this.Name + "'," +
             " [ItemId] = " + ((this.ItemId != null) ? this.ItemId.ToString() : "NULL") + "," +
             " [SerialNumber] = '" + this.SerialNumber + "'," +
@@ -56,9 +55,9 @@ namespace WindowsFormsApplication1
 
         public void DeleteFromDB(int id)
         {
-            AccessDB aDB = new AccessDB();
+            CAccessDB aDB = new CAccessDB();
             string sqlcmd = null;
-            sqlcmd = "DELETE FROM " + Session.DTables[Session.Act.Products] +
+            sqlcmd = "DELETE FROM Products" +
                      " WHERE [IdProduct] = " + id;
             aDB.ExecSQLNonQuery(sqlcmd);
         }
@@ -66,12 +65,19 @@ namespace WindowsFormsApplication1
         public DataTable GetItemsTable()
         {
             DataTable _dt = null;
-            AccessDB aDB = new AccessDB();
+            CAccessDB aDB = new CAccessDB();
             string sqlcmd = null;
-            sqlcmd = "SELECT IdItem AS ValueMember, (ItemName & ' ' & OrderPrefix) AS DisplayMember FROM " +
-                     Session.DTables[Session.Act.Items];
+            sqlcmd = "SELECT IdItem AS ValueMember, (ItemName & ' ' & OrderPrefix) AS DisplayMember FROM Items";
             _dt = aDB.ExecSQLQuery(sqlcmd);
             return _dt;
+        }
+
+        public DataTable GetDataTable()
+        {
+            CAccessDB aDB = new CAccessDB();
+            string sqlcmd = "SELECT * FROM Products";
+            DataTable gridDT = aDB.ExecSQLQuery(sqlcmd);
+            return gridDT;
         }
     }
 }

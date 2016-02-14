@@ -9,13 +9,13 @@ using System.Net;
 
 namespace WindowsFormsApplication1
 {
-    public class FileContent
+    public class CFileContent
     {
 
         public string path { get; private set; }
         public bool IsEmpty { get; private set; }
 
-        public string MakePath(Item _item)
+        public string MakePath(CItem _item)
         {
             string _path = ""; 
             _path = Session._path + Session.__pathPrefix + @"\" + _item.ProducerId + " - " + _item.Id;

@@ -13,8 +13,8 @@ namespace WindowsFormsApplication1
     public partial class FItems : Form
     {
 
-        private Item _item = new Item();
-        private FileContent _fc { get; set; }
+        private CItem _item = new CItem();
+        private CFileContent _fc { get; set; }
         private string URL { get; set; }
 
         public FItems(int _id)
@@ -25,13 +25,12 @@ namespace WindowsFormsApplication1
             tbOrderPrefix.Text = _item.OrderPrefix;
             chbMachineBit.Checked = _item.MachineBit;
 
-            AccessDB aDB = new AccessDB();
-            cbProducer.DataSource = aDB.getTable(Session.DTables[Session.Act.Producers]);
+            cbProducer.DataSource = new CProducer().GetDataTable();
             cbProducer.DisplayMember = "ProducerName";
             cbProducer.ValueMember = "IdProducer";
             cbProducer.SelectedValue = _item.ProducerId ?? 0;
 
-            _fc = new FileContent();
+            _fc = new CFileContent();
             _fc.MakePath(_item);
             Renew();
         }
@@ -85,7 +84,7 @@ namespace WindowsFormsApplication1
 
         private void ShowMyDialogBox()
         {
-            Dialog testDialog = new Dialog();
+            FDialog testDialog = new FDialog();
 
             // Show testDialog as a modal dialog and determine if DialogResult = OK.
             if (testDialog.ShowDialog(this) == DialogResult.OK)

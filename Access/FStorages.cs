@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class FStorages : Form
     {
-        private Storage Storage = new Storage();
+        private CStorage Storage = new CStorage();
         public FStorages(int id)
         {
             InitializeComponent();

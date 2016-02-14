@@ -47,12 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessDB.cs" />
-    <Compile Include="Dialog.cs">
+    <Compile Include="CAccessDB.cs" />
+    <Compile Include="CGrid.cs" />
+    <Compile Include="FDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog.Designer.cs">
-      <DependentUpon>Dialog.cs</DependentUpon>
+    <Compile Include="FDialog.Designer.cs">
+      <DependentUpon>FDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="FHardwares.cs">
       <SubType>Form</SubType>
@@ -60,7 +61,7 @@
     <Compile Include="FHardwares.Designer.cs">
       <DependentUpon>FHardwares.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileContent.cs" />
+    <Compile Include="CFileContent.cs" />
     <Compile Include="FProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,17 +74,17 @@
     <Compile Include="FStorages.Designer.cs">
       <DependentUpon>FStorages.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hardware.cs" />
+    <Compile Include="CHardware.cs" />
     <Compile Include="IMyTable.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="CItem.cs" />
     <Compile Include="FItems.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FItems.Designer.cs">
       <DependentUpon>FItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="producer.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="CProducer.cs" />
+    <Compile Include="CProduct.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -105,9 +106,9 @@
     <Compile Include="ListNavigator.Designer.cs">
       <DependentUpon>ListNavigator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Storage.cs" />
-    <EmbeddedResource Include="Dialog.resx">
-      <DependentUpon>Dialog.cs</DependentUpon>
+    <Compile Include="CStorage.cs" />
+    <EmbeddedResource Include="FDialog.resx">
+      <DependentUpon>FDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FHardwares.resx">
       <DependentUpon>FHardwares.cs</DependentUpon>

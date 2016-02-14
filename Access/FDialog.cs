@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Dialog : Form
+    public partial class FDialog : Form
     {
-        public Dialog()
+        public FDialog()
         {
             InitializeComponent();
         }

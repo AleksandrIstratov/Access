@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public class producer:IMyTable
+    public class CProducer:IMyTable
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,25 +16,24 @@ namespace WindowsFormsApplication1
         public void LoadFromDB(int id)
         {
             this.Id = id;
-            AccessDB aDB = new AccessDB();
-            DataTable dT = aDB.getTable(Session.DTables[Session.Act.Producers]);
+            DataTable dT = this.GetDataTable();
             DataRow row = dT.Select("IdProducer = " + this.Id).First();
             this.Name = row.Field<string>("ProducerName");
         }
 
         public void SaveToDB()
         {
-            AccessDB aDB = new AccessDB();
+            CAccessDB aDB = new CAccessDB();
             string sqlcmd = null;
             if (this.Id == 0)
             {
-                sqlcmd = "SELECT TOP 1 IdProducer FROM " + Session.DTables[Session.Act.Producers] + " ORDER BY IdProducer DESC";
+                sqlcmd = "SELECT TOP 1 IdProducer FROM Producers ORDER BY IdProducer DESC";
                 this.Id = aDB.ExecSQLQuery(sqlcmd).Select().First().Field<int>("IdProducer")+1;
-                sqlcmd = "INSERT INTO " + Session.DTables[Session.Act.Producers]+
+                sqlcmd = "INSERT INTO Producers" +
                 " ([IdProducer]) VALUES (" + this.Id + ")";
                 aDB.ExecSQLNonQuery(sqlcmd);
             }
-                sqlcmd = "UPDATE " + Session.DTables[Session.Act.Producers] +
+                sqlcmd = "UPDATE Producers" +
                 " SET [ProducerName] = '" + this.Name + "'" +
                 " WHERE [IdProducer] = " + this.Id;
                 aDB.ExecSQLNonQuery(sqlcmd);
@@ -42,11 +41,19 @@ namespace WindowsFormsApplication1
 
         public void DeleteFromDB(int id)
         {
-            AccessDB aDB = new AccessDB();
+            CAccessDB aDB = new CAccessDB();
             string sqlcmd = null;
-            sqlcmd = "DELETE FROM " + Session.DTables[Session.Act.Producers] +
+            sqlcmd = "DELETE FROM Producers" +
                      " WHERE [IdProducer] = " + id;
             aDB.ExecSQLNonQuery(sqlcmd);
+        }
+
+        public DataTable GetDataTable()
+        {
+            CAccessDB aDB = new CAccessDB();
+            string sqlcmd = "SELECT * FROM Producers";
+            DataTable gridDT = aDB.ExecSQLQuery(sqlcmd);
+            return gridDT;
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnItems = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dGW = new System.Windows.Forms.DataGridView();
             this.btnProducers = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             this.btnStorages = new System.Windows.Forms.Button();
             this.btnHardwares = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGW)).BeginInit();
             this.SuspendLayout();
             // 
             // btnItems
@@ -51,20 +51,23 @@
             this.btnItems.UseVisualStyleBackColor = true;
             this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
             // 
-            // dataGridView1
+            // dGW
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(93, 13);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(552, 473);
-            this.dataGridView1.TabIndex = 1;
+            this.dGW.AllowUserToAddRows = false;
+            this.dGW.AllowUserToDeleteRows = false;
+            this.dGW.AllowUserToResizeRows = false;
+            this.dGW.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGW.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dGW.Location = new System.Drawing.Point(93, 13);
+            this.dGW.MultiSelect = false;
+            this.dGW.Name = "dGW";
+            this.dGW.ReadOnly = true;
+            this.dGW.RowHeadersVisible = false;
+            this.dGW.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGW.ShowEditingIcon = false;
+            this.dGW.Size = new System.Drawing.Size(552, 473);
+            this.dGW.TabIndex = 1;
             // 
             // btnProducers
             // 
@@ -162,11 +165,11 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnProducers);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dGW);
             this.Controls.Add(this.btnItems);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGW)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,7 +177,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnItems;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dGW;
         private System.Windows.Forms.Button btnProducers;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAdd;

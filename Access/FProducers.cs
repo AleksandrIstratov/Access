@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class FProducers : Form
     {
-        private producer prd = new producer();
+        private CProducer prd = new CProducer();
 
         public FProducers(int _id)
         {
