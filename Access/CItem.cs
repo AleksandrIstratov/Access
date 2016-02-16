@@ -19,13 +19,15 @@ namespace WindowsFormsApplication1
         public DataTable GetDataTable()
         {
             CAccessDB aDB = new CAccessDB();
-            string sqlcmd = @"SELECT IdItem, 
-                                     ItemName, 
-                                     ProducerId,
-                                     OrderPrefix,
-                                     MachineBit,
-                                     ParentId
-                              FROM Items";
+            string sqlcmd = @"SELECT I.IdItem, 
+                                     I.ItemName, 
+                                     I.ProducerId,
+                                     I.OrderPrefix,
+                                     I.MachineBit,
+                                     I.ParentId,
+                                     P.ProducerName
+                              FROM Items I
+                              LEFT JOIN Producers P ON I.ProducerId = P.IdProducer";
             DataTable gridDT = aDB.ExecSQLQuery(sqlcmd);
             return gridDT;
         }

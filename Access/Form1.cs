@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
             dGW.Columns.Clear();
             dGW.DataSource = Session.GetCurrTable().GetDataTable();
             CGrid.SetDGridView(dGW, Session.currAct.ToString());
-            dGW.AutoResizeColumns();
+//            dGW.AutoResizeColumns();
             LoadState();
         }
 

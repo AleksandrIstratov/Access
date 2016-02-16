@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
             this.Id = id;
             DataTable dT = this.GetDataTable();
             DataRow row = dT.Select("IdHardware = " + this.Id).First();
-            this.Name = row.Field<string>("HardwareName");
+            this.Name = row.Field<string>("H.HardwareName");
             this.ItemId = row.Field<int?>("ItemId");
             this.ParentHardware = row.Field<int?>("ParentHardware");           
         }
@@ -80,7 +80,18 @@ namespace WindowsFormsApplication1
         public DataTable GetDataTable()
         {
             CAccessDB aDB = new CAccessDB();
-            string sqlcmd = "SELECT * FROM Hardwares";
+            string sqlcmd = @"SELECT H.IdHardware,
+                                     H.HardwareName,
+                                     H.ItemId,
+                                     H.ParentHardware,
+                                     Ph.HardwareName,
+                                     I.ItemName,
+                                     P.ProducerName
+                              FROM (((Hardwares H)
+                              LEFT JOIN Items I ON H.ItemId = I.IdItem)
+                              LEFT JOIN Hardwares Ph ON H.ParentHardware = Ph.IdHardware)
+                              LEFT JOIN Producers P ON I.ProducerId = P.IdProducer";
+
             DataTable gridDT = aDB.ExecSQLQuery(sqlcmd);
             return gridDT;
         }

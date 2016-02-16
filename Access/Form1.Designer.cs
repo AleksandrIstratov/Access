@@ -56,7 +56,6 @@
             this.dGW.AllowUserToAddRows = false;
             this.dGW.AllowUserToDeleteRows = false;
             this.dGW.AllowUserToResizeRows = false;
-            this.dGW.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGW.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dGW.Location = new System.Drawing.Point(93, 13);
@@ -64,6 +63,7 @@
             this.dGW.Name = "dGW";
             this.dGW.ReadOnly = true;
             this.dGW.RowHeadersVisible = false;
+            this.dGW.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dGW.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGW.ShowEditingIcon = false;
             this.dGW.Size = new System.Drawing.Size(552, 473);
