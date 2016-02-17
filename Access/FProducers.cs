@@ -19,7 +19,6 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             if (_id>0) this.prd.LoadFromDB(_id);
             tbName.Text = prd.Name;
-            tbProducerShortName.Text = prd.ShortName;
         }
 
 
@@ -36,13 +35,6 @@ namespace WindowsFormsApplication1
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.prd.Name = tbName.Text;
-            this.prd.ShortName = tbProducerShortName.Text;
-            if (prd.ShortName.Length == 0)
-            {
-                int _len = prd.Name.Length;
-                int _max = (_len < 4) ? _len : 4;
-                prd.ShortName = prd.Name.Substring(0, _max);
-            }
             this.prd.SaveToDB();
         }
     }

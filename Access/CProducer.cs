@@ -12,7 +12,6 @@ namespace WindowsFormsApplication1
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ShortName { get; set; }
 
         public void LoadFromDB(int id)
         {
@@ -20,7 +19,6 @@ namespace WindowsFormsApplication1
             DataTable dT = this.GetDataTable();
             DataRow row = dT.Select("IdProducer = " + this.Id).First();
             this.Name = row.Field<string>("ProducerName");
-            this.ShortName = row.Field<string>("ProducerShortName");
         }
 
         public void SaveToDB()
@@ -36,8 +34,7 @@ namespace WindowsFormsApplication1
                 aDB.ExecSQLNonQuery(sqlcmd);
             }
                 sqlcmd = "UPDATE Producers" +
-                " SET [ProducerName] = '" + this.Name + "'," +
-                " [ProducerShortName] = '" + this.ShortName + "'" +
+                " SET [ProducerName] = '" + this.Name + "'" +
                 " WHERE [IdProducer] = " + this.Id;
                 aDB.ExecSQLNonQuery(sqlcmd);
         }
