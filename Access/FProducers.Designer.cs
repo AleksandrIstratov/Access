@@ -32,6 +32,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
+            this.tbProducerShortName = new System.Windows.Forms.TextBox();
+            this.lProdecerShortName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
@@ -70,18 +72,36 @@
             this.tbName.Size = new System.Drawing.Size(234, 20);
             this.tbName.TabIndex = 3;
             // 
-            // Producers
+            // tbProducerShortName
+            // 
+            this.tbProducerShortName.Location = new System.Drawing.Point(13, 99);
+            this.tbProducerShortName.Name = "tbProducerShortName";
+            this.tbProducerShortName.Size = new System.Drawing.Size(100, 20);
+            this.tbProducerShortName.TabIndex = 4;
+            // 
+            // lProdecerShortName
+            // 
+            this.lProdecerShortName.AutoSize = true;
+            this.lProdecerShortName.Location = new System.Drawing.Point(13, 83);
+            this.lProdecerShortName.Name = "lProdecerShortName";
+            this.lProdecerShortName.Size = new System.Drawing.Size(105, 13);
+            this.lProdecerShortName.TabIndex = 5;
+            this.lProdecerShortName.Text = "Producer short name";
+            // 
+            // FProducers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 401);
+            this.Controls.Add(this.lProdecerShortName);
+            this.Controls.Add(this.tbProducerShortName);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Producers";
+            this.Name = "FProducers";
             this.Text = "Producers";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,5 +114,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbProducerShortName;
+        private System.Windows.Forms.Label lProdecerShortName;
     }
 }
